@@ -1,0 +1,61 @@
+// AirlineInformation.idl : IDL source for AirlineInformation.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (AirlineInformation.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+	[
+		object,
+		uuid(BE246480-1FDD-4A17-B07D-6A90D49F2174),
+		dual,
+		helpstring("IAirlineInfo Interface"),
+		pointer_default(unique)
+	]
+	interface IAirlineInfo : IDispatch
+	{
+		[id(1), helpstring("method GetAirlineTiming")] HRESULT GetAirlineTiming([in] BSTR bstrAirline, [out,retval] BSTR* pBstrDetails);
+		[propget, id(2), helpstring("property LocalTimeAtOrlando")] HRESULT LocalTimeAtOrlando([out, retval] BSTR *pVal);
+	};
+
+	
+	[
+		object,
+		uuid(3E918A69-A7F8-4036-9C21-04FB1AAF1C87),
+		dual,
+		helpstring("IAirportFacilitiesInfo Interface"),
+		pointer_default(unique)
+	]
+	interface IAirportFacilitiesInfo : IDispatch
+	{
+		[id(1), helpstring("method GetInternetCafeLocations")] HRESULT GetInternetCafeLocations([out,retval] BSTR* pBstrLocationDetails);
+	};
+
+
+
+
+[
+	uuid(4A11EAD9-6D41-4013-81BF-196AFC1EB3F9),
+	version(1.0),
+	helpstring("AirlineInformation 1.0 Type Library")
+]
+library AIRLINEINFORMATIONLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+	
+	interface IAirportFacilitiesInfo;
+
+
+	[
+		uuid(F29EAEEE-D445-403B-B89E-C8C502B115D8),
+		helpstring("AirlineInfo Class")
+	]
+	coclass AirlineInfo
+	{
+		[default] interface IAirlineInfo;
+		interface IAirportFacilitiesInfo;
+	};
+};

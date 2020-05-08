@@ -1,0 +1,26 @@
+HKCR
+{
+	AirlineInformation.AirlineInfo.1 = s 'AirlineInfo Class'
+	{
+		CLSID = s '{F29EAEEE-D445-403B-B89E-C8C502B115D8}'
+	}
+	AirlineInformation.AirlineInfo = s 'AirlineInfo Class'
+	{
+		CLSID = s '{F29EAEEE-D445-403B-B89E-C8C502B115D8}'
+		CurVer = s 'AirlineInformation.AirlineInfo.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {F29EAEEE-D445-403B-B89E-C8C502B115D8} = s 'AirlineInfo Class'
+		{
+			ProgID = s 'AirlineInformation.AirlineInfo.1'
+			VersionIndependentProgID = s 'AirlineInformation.AirlineInfo'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{4A11EAD9-6D41-4013-81BF-196AFC1EB3F9}'
+		}
+	}
+}
